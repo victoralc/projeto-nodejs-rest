@@ -1,9 +1,19 @@
+const Atendimento = require('../models/atendimentos')
+
 module.exports = app => {
-    app.get('/atendimentos', (req, res) => 
-        res.send("You are in appointments page with GET method request"));
+    app.get('/atendimentos', (req, res) => {
+        Atendimento.lista(res);
+    });
+
+    app.get('/atendimentos/:id', (req, res) => { 
+        const id = parseInt(req.params.id);
+        Atendimento.buscaPorId(id, res);
+    });
 
     app.post("/atendimentos", (req, res) => {
-        console.log(req.body)
-        res.send("Voce esta realizando um POST para rotas de /atendimentos")
+        const atendimento = req.body;
+        Atendimento.adiciona(atendimento, res);
+        
+        res.send("Voce esta realizando um POST para rotas '/atendimentos'")
     });
 };
