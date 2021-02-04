@@ -1,0 +1,28 @@
+{
+  "name": "projeto-nodejs-rest",
+  "version": "1.0.0",
+  "description": "Demo project of REST API in node.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victoralc/projeto-nodejs-rest.git"
+  },
+  "author": "Victor Alcantara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victoralc/projeto-nodejs-rest/issues"
+  },
+  "homepage": "https://github.com/victoralc/projeto-nodejs-rest#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
