@@ -16,4 +16,16 @@ module.exports = app => {
         
         res.send("Voce esta realizando um POST para rotas '/atendimentos'")
     });
+
+    app.patch("/atendimentos/:id", (req, res) => {
+        const id = parseInt(req.params.id);
+        const valores = req.body;
+        
+        Atendimento.altera(id, valores, res);
+    });
+
+    app.delete("/atendimentos/:id", (req, res) => {
+        const id = parseInt(req.params.id);
+        Atendimento.delete(id, res);
+    });
 };

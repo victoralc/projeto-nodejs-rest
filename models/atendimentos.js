@@ -35,7 +35,7 @@ class Atendimento {
                 if (erro) {
                     res.status(400).json(erro);
                 } else {
-                    res.status(201).json(resultados);
+                    res.status(201).json(atendimento);
                 }
             });
         }
@@ -64,6 +64,31 @@ class Atendimento {
             }
         });
     
+    }
+
+    altera(id, valores, res) {
+        if (valores.data_agendada) {
+            valores.data_agendada = moment(valores.data_agendada, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS');
+        }
+        const update_sql = 'UPDATE Atendimentos SET ? WHERE id=?';
+        conexao.query(update_sql, [valores, id], (erro, resultados) => {
+            if(erro) { 
+                res.status(400).json(erro);
+            } else {
+                res.status(200).json({...valores, id});
+            }
+        });
+    }
+
+    delete(id, res) {
+        const update_sql = 'DELETE FROM Atendimentos WHERE id=?';
+        conexao.query(update_sql, id, (erro, resultados) => {
+            if(erro) { 
+                res.status(400).json(erro);
+            } else {
+                res.status(200).json("Atendimento removido com sucesso.");
+            }
+        });
     }
 
 }
